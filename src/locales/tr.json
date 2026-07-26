@@ -55,6 +55,11 @@
   },
   "settings": {
     "title": "Ayarlar",
-    "placeholder": "Uygulama ayarları burada olacak"
+    "language": {
+      "label": "Dil",
+      "system": "Sistem dili",
+      "tr": "Türkçe",
+      "en": "English"
+    }
   }
 }

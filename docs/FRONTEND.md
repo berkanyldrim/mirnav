@@ -40,7 +40,7 @@ Bkz. `PROJE.md` genel bağlam için, `PROJE_KURALLARI.md` kod standartları içi
 
 - [x] Expo projesini kur, TypeScript + ESLint + Prettier yapılandır
 - [x] Expo Router ile temel navigasyon (Home / Colony / Store / Settings sekmeleri)
-- [x] Zustand store: `sessionStore`, `colonyStore` (`settingsStore` settings ekranıyla birlikte gelecek)
+- [x] Zustand store: `sessionStore`, `colonyStore`, `settingsStore` (dil tercihi: sistem/tr/en, settings ekranındaki dil seçiciyle)
 - [x] Sayaç bileşeni: geri sayım mantığı, süre seçimi (15/25/50 dk + 5-180 dk arası özel)
 - [x] `AppState` dinleyicisi: uygulama arka plana geçerse seansı iptal et, ön plana dönerse durumu değerlendir (5 sn tolerans)
 - [x] Seans tamamlanma mantığı: toplam süre, streak, son seans tarihini kalıcı depoya yaz
