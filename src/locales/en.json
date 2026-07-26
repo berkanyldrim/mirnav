@@ -1,0 +1,24 @@
+{
+  "tabs": {
+    "focus": "Focus",
+    "colony": "Colony",
+    "store": "Store",
+    "settings": "Settings"
+  },
+  "focus": {
+    "title": "Focus",
+    "placeholder": "The focus timer will live here"
+  },
+  "colony": {
+    "title": "Colony",
+    "placeholder": "Your cat colony will grow here"
+  },
+  "store": {
+    "title": "Store",
+    "placeholder": "Cosmetic items will live here"
+  },
+  "settings": {
+    "title": "Settings",
+    "placeholder": "App settings will live here"
+  }
+}

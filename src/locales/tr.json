@@ -1,0 +1,24 @@
+{
+  "tabs": {
+    "focus": "Odak",
+    "colony": "Koloni",
+    "store": "Mağaza",
+    "settings": "Ayarlar"
+  },
+  "focus": {
+    "title": "Odaklan",
+    "placeholder": "Odak sayacı burada olacak"
+  },
+  "colony": {
+    "title": "Koloni",
+    "placeholder": "Kedi kolonin burada büyüyecek"
+  },
+  "store": {
+    "title": "Mağaza",
+    "placeholder": "Kozmetik ürünler burada olacak"
+  },
+  "settings": {
+    "title": "Ayarlar",
+    "placeholder": "Uygulama ayarları burada olacak"
+  }
+}
