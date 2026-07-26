@@ -19,4 +19,5 @@ Forest tarzı, sokak kedisi temalı odaklanma uygulaması. React Native + Expo (
 - Karanlık mod zorunlu, her ekran iki modda çalışmalı.
 - Reklam ve pay-to-focus asla eklenmez; sadece kozmetik satış.
 - Commit: Conventional Commits, İngilizce.
+- `main`'e doğrudan commit yok: her iş güncel `main`'den, işin adını taşıyan branch'te yapılır (`home-page`, `settings-page` gibi, prefix yok). Push → MR → merge → `main` pull, sonraki branch yine `main`'den.
 - Sabitler `src/constants/` altında tutulur.

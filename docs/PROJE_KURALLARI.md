@@ -33,8 +33,20 @@ Bu doküman kod yazarken, tasarım kararı alırken ve ürün kararı verirken r
 - **Commit mesajları her zaman İngilizce yazılır.** Türkçe commit mesajı kabul edilmez, istisna yok.
 - **Conventional Commits** formatı: `feat:`, `fix:`, `docs:`, `refactor:`, `chore:`
 - Örnek: `feat: add colony gallery grid view`
-- **Branch adlandırma:** İngilizce, örn. `feature/colony-gallery`, `fix/timer-background-bug`
+- **Branch adlandırma:** İngilizce, kebab-case, prefix yok — branch adı yapılan işin adıdır: `home-page`, `settings-page`, `colony-gallery`, `timer-background-fix`
 - Küçük, sık commit'ler tercih edilir — tek dev projede bile geçmişi okunabilir tutmak ileride işe yarar (özellik geri alma, hata ayıklama).
+
+### 3.1 Branch İş Akışı
+
+- **`main`'e doğrudan commit atılmaz.** İlk kurulum commit'i hariç, her iş bir branch üzerinden gider.
+- Akış her zaman şu sırayla ilerler:
+  1. `main`'e geç ve güncelle: `git checkout main && git pull`
+  2. `main`'den işin adıyla yeni branch kır: `git checkout -b home-page`
+  3. İşi yap, commit'le, branch'i push'la: `git push -u origin home-page`
+  4. GitHub'da MR (pull request) aç ve `main`'e merge et
+  5. `main`'e dönüp `git pull` çek — sonraki branch yine güncel `main`'den kırılır
+- Yeni branch asla başka bir branch'ten kırılmaz, her zaman güncel `main`'den kırılır.
+- Merge edilen branch'ler silinir — biten işin branch'i çöplük olarak kalmaz.
 
 ## 4. Tasarım Kuralları
 
