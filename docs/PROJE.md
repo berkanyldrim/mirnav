@@ -31,8 +31,8 @@ Seans yarıda kesilirse (uygulamadan çıkma/arka plana alma): seans başarısı
 
 - [x] Konsept ve ekran tasarımları (mockuplar tamamlandı)
 - [x] Odaklanma seansı (sayaç + arka plana geçiş algılama)
-- [ ] Koloni galerisi (kilitli/açık kedi listesi)
-- [ ] Seans sonu ödül ekranı
+- [x] Koloni galerisi (kilitli/açık kedi listesi)
+- [x] Seans sonu ödül ekranı
 - [x] Streak (günlük seri) takibi
 - [ ] Mağaza ekranı (Pro paket + tekil kostüm satın alma)
 - [ ] Bildirimler (günlük hatırlatma, isteğe bağlı)

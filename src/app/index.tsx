@@ -11,6 +11,7 @@ import { CustomDurationMinutes, FocusDurationOptionsMinutes } from '@/constants/
 import { Spacing } from '@/constants/theme';
 import { useColonyStore } from '@/features/colony/colony-store';
 import { formatClock } from '@/features/focus-session/format-time';
+import { SessionRewardModal } from '@/features/focus-session/session-reward-modal';
 import { useSessionStore } from '@/features/focus-session/session-store';
 import { getDisplayStreak, toDateKey } from '@/features/focus-session/streak';
 import { useAppStateGuard } from '@/features/focus-session/use-app-state-guard';
@@ -68,12 +69,8 @@ export default function FocusScreen() {
             <ThemedText themeColor="textSecondary" style={styles.hint}>
               {status === 'running' && t('home.runningHint', { cat: activeCat.name })}
               {status === 'idle' && t('home.idleHint', { cat: activeCat.name })}
-              {status === 'completed' && t('home.completedMessage', { cat: activeCat.name })}
               {status === 'failed' && t('home.failedMessage', { cat: activeCat.name })}
             </ThemedText>
-            {status === 'completed' && (
-              <ThemedText type="smallBold">{t('home.completedTitle')}</ThemedText>
-            )}
             {status === 'failed' && (
               <ThemedText type="smallBold">{t('home.failedTitle')}</ThemedText>
             )}
@@ -135,7 +132,7 @@ export default function FocusScreen() {
                 <ThemedText type="smallBold">{t('home.giveUp')}</ThemedText>
               </Pressable>
             )}
-            {(status === 'completed' || status === 'failed') && (
+            {status === 'failed' && (
               <Pressable
                 onPress={resetSession}
                 style={[styles.primaryButton, { backgroundColor: theme.accent }]}>
@@ -146,6 +143,7 @@ export default function FocusScreen() {
             )}
           </View>
         </View>
+        <SessionRewardModal />
       </SafeAreaView>
     </ThemedView>
   );

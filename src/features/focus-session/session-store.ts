@@ -2,6 +2,7 @@ import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
 import { DefaultDurationMinutes } from '@/constants/session';
+import { getNewlyUnlockedCat } from '@/features/colony/unlock';
 import { getNextStreak, toDateKey } from '@/features/focus-session/streak';
 import { appStorage } from '@/lib/storage';
 
@@ -15,6 +16,7 @@ type SessionState = {
   completedSessionCount: number;
   currentStreak: number;
   lastCompletedDate: string | null;
+  unlockedCatId: string | null;
   selectDuration: (minutes: number) => void;
   startSession: () => void;
   completeSession: () => void;
@@ -32,6 +34,7 @@ export const useSessionStore = create<SessionState>()(
       completedSessionCount: 0,
       currentStreak: 0,
       lastCompletedDate: null,
+      unlockedCatId: null,
       selectDuration: (minutes) => set({ durationMinutes: minutes }),
       startSession: () =>
         set((state) => ({
@@ -42,10 +45,11 @@ export const useSessionStore = create<SessionState>()(
         const state = get();
         if (state.status !== 'running') return;
         const completionDate = toDateKey(new Date());
+        const nextTotalFocusSeconds = state.totalFocusSeconds + state.durationMinutes * 60;
         set({
           status: 'completed',
           endsAt: null,
-          totalFocusSeconds: state.totalFocusSeconds + state.durationMinutes * 60,
+          totalFocusSeconds: nextTotalFocusSeconds,
           completedSessionCount: state.completedSessionCount + 1,
           currentStreak: getNextStreak(
             state.lastCompletedDate,
@@ -53,10 +57,12 @@ export const useSessionStore = create<SessionState>()(
             completionDate,
           ),
           lastCompletedDate: completionDate,
+          unlockedCatId:
+            getNewlyUnlockedCat(state.totalFocusSeconds, nextTotalFocusSeconds)?.id ?? null,
         });
       },
-      failSession: () => set({ status: 'failed', endsAt: null }),
-      resetSession: () => set({ status: 'idle', endsAt: null }),
+      failSession: () => set({ status: 'failed', endsAt: null, unlockedCatId: null }),
+      resetSession: () => set({ status: 'idle', endsAt: null, unlockedCatId: null }),
     }),
     {
       name: 'session',
