@@ -22,7 +22,23 @@
   },
   "colony": {
     "title": "Colony",
-    "placeholder": "Your cat colony will grow here"
+    "totalFocus": "Total focus: {{hours}} hours",
+    "nextUnlock": "Next cat: {{cat}} · {{hours}} hours",
+    "allUnlocked": "Every cat has joined the colony 🎉",
+    "activeBadge": "Active",
+    "lockedHours": "{{count}} h",
+    "selectCat": "Make {{cat}} the active cat",
+    "lockedCat": "{{cat}} is locked, unlocks after {{hours}} hours of focus",
+    "cats": {
+      "boncuk": "The neighborhood's first cat, with you in every session.",
+      "tekir": "Windowsill explorer, always chasing sunlight.",
+      "duman": "A quiet shadow, patrols the streets at night.",
+      "pamuk": "Soft and picky, does not share her lap easily.",
+      "sarman": "The chubby big brother, never misses meal time.",
+      "minnos": "Everyone's darling, purrs loud enough for two streets.",
+      "zeytin": "Steady gaze, ruler of the rooftops.",
+      "karamel": "Rarely seen, the reward of patience."
+    }
   },
   "store": {
     "title": "Store",

@@ -22,7 +22,23 @@
   },
   "colony": {
     "title": "Koloni",
-    "placeholder": "Kedi kolonin burada büyüyecek"
+    "totalFocus": "Toplam odak: {{hours}} saat",
+    "nextUnlock": "Sıradaki kedi: {{cat}} · {{hours}} saat",
+    "allUnlocked": "Tüm kediler koloniye katıldı 🎉",
+    "activeBadge": "Aktif",
+    "lockedHours": "{{count}} sa",
+    "selectCat": "{{cat}} kedisini aktif yap",
+    "lockedCat": "{{cat}} kilitli, {{hours}} saat odaklanınca açılır",
+    "cats": {
+      "boncuk": "Mahallenin ilk kedisi, seninle her seansta.",
+      "tekir": "Pencere önü kaşifi, güneş ışığı kovalar.",
+      "duman": "Sessiz gölge, geceleri devriye gezer.",
+      "pamuk": "Yumuşacık ama seçici, kucağını kolay vermez.",
+      "sarman": "Mahallenin tombul ağabeyi, mama saatini şaşırmaz.",
+      "minnos": "Herkesin sevgilisi, mırlaması iki sokak öteden duyulur.",
+      "zeytin": "Kararlı bakışlı, çatıların hakimi.",
+      "karamel": "Nadir görünür, sabrın ödülüdür."
+    }
   },
   "store": {
     "title": "Mağaza",
