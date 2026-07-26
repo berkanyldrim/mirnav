@@ -38,13 +38,13 @@ Bkz. `PROJE.md` genel bağlam için, `PROJE_KURALLARI.md` kod standartları içi
 
 ## 3. Faz 1 — Çekirdek Deneyim (MVP iskeleti)
 
-- [ ] Expo projesini kur, TypeScript + ESLint + Prettier yapılandır
-- [ ] Expo Router ile temel navigasyon (Home / Colony / Store / Settings sekmeleri)
-- [ ] Zustand store: `sessionStore`, `colonyStore`, `settingsStore`
-- [ ] Sayaç bileşeni (`Timer`): geri sayım mantığı, süre seçimi (15/25/50 dk + özel)
-- [ ] `AppState` dinleyicisi: uygulama arka plana geçerse seansı iptal et, ön plana dönerse durumu değerlendir
-- [ ] Seans tamamlanma mantığı: MMKV'ye toplam süre, streak, son seans tarihini yaz
-- [ ] Ana ekran UI'ı (mockup'taki dairesel sayaç + aktif kedi görseli)
+- [x] Expo projesini kur, TypeScript + ESLint + Prettier yapılandır
+- [x] Expo Router ile temel navigasyon (Home / Colony / Store / Settings sekmeleri)
+- [x] Zustand store: `sessionStore`, `colonyStore` (`settingsStore` settings ekranıyla birlikte gelecek)
+- [x] Sayaç bileşeni: geri sayım mantığı, süre seçimi (15/25/50 dk + 5-180 dk arası özel)
+- [x] `AppState` dinleyicisi: uygulama arka plana geçerse seansı iptal et, ön plana dönerse durumu değerlendir (5 sn tolerans)
+- [x] Seans tamamlanma mantığı: toplam süre, streak, son seans tarihini kalıcı depoya yaz
+- [x] Ana ekran UI'ı (mockup'taki dairesel sayaç + aktif kedi görseli)
 
 ## 4. Faz 2 — Koloni Sistemi
 
@@ -79,3 +79,6 @@ Bkz. `PROJE.md` genel bağlam için, `PROJE_KURALLARI.md` kod standartları içi
 
 **Neden MMKV, neden sunucu değil (v1):**
 Kullanıcı verisi (seans geçmişi, unlock durumu, streak) tamamen cihazda tutulabilir; bu v1'i basitleştirir, sunucu maliyetini sıfırlar ve gizlilik açısından da avantajlıdır. Çoklu cihaz senkronizasyonu gerçek bir kullanıcı talebi olarak öne çıkarsa `BACKEND.md`'deki v2 planına geçilir.
+
+**Depolama kararı (geliştirme dönemi):**
+MMKV native modül olduğu için Expo Go'da çalışmıyor. Geliştirme Expo Go üzerinden sürdüğü için kalıcı depo şimdilik AsyncStorage (zustand persist). Tüm erişim `src/lib/storage.ts` üzerinden geçiyor; development build'e geçildiğinde sadece bu dosya değiştirilerek MMKV'ye dönülecek.
