@@ -30,10 +30,10 @@ Seans yarıda kesilirse (uygulamadan çıkma/arka plana alma): seans başarısı
 ## 5. v1 (MVP) Kapsamı
 
 - [x] Konsept ve ekran tasarımları (mockuplar tamamlandı)
-- [ ] Odaklanma seansı (sayaç + arka plana geçiş algılama)
+- [x] Odaklanma seansı (sayaç + arka plana geçiş algılama)
 - [ ] Koloni galerisi (kilitli/açık kedi listesi)
 - [ ] Seans sonu ödül ekranı
-- [ ] Streak (günlük seri) takibi
+- [x] Streak (günlük seri) takibi
 - [ ] Mağaza ekranı (Pro paket + tekil kostüm satın alma)
 - [ ] Bildirimler (günlük hatırlatma, isteğe bağlı)
 - [ ] Türkçe + İngilizce dil desteği (öncelik: Türkçe)
@@ -79,6 +79,8 @@ Kural: **hiçbir kozmetik ürün odaklanma deneyimini iyileştirmemeli** (pay-to
 - Gerçek bir hayvan barınağıyla bağış ortaklığı yapılacak mı (v2 fikri, pazarlama değeri yüksek ama operasyonel yük getirir)
 - İlk sürümde kaç kedi olacak (öneri: 8-10, sonrasında güncellemelerle genişlet)
 - Bildirim sıklığı ve tonu (rahatsız etmeden hatırlatma nasıl kurgulanır)
+- Kedi kilit açma saat eşikleri (ilk taslak `src/constants/cats.ts` içinde, balancing testi yapılmadı)
+- Geliştirme döneminde MMKV yerine AsyncStorage kullanılıyor (bkz. FRONTEND.md Teknik Notlar) — development build'e geçince MMKV'ye dönülecek
 
 ## 11. İlgili Dokümanlar
 
