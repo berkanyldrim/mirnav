@@ -5,9 +5,20 @@
     "store": "Store",
     "settings": "Settings"
   },
-  "focus": {
-    "title": "Focus",
-    "placeholder": "The focus timer will live here"
+  "home": {
+    "streakDays": "{{count}} days",
+    "durationMinutes": "{{count}} min",
+    "decreaseDuration": "Decrease duration",
+    "increaseDuration": "Increase duration",
+    "startSession": "Start Session",
+    "giveUp": "Give Up",
+    "newSession": "New Session",
+    "idleHint": "{{cat}} is waiting for you to focus",
+    "runningHint": "{{cat}} is focusing with you",
+    "completedTitle": "Session complete!",
+    "completedMessage": "{{cat}} had a full meal, purring happily 🐾",
+    "failedTitle": "Not this time",
+    "failedMessage": "No worries, {{cat}} is still waiting. Try again when you are ready."
   },
   "colony": {
     "title": "Colony",
