@@ -48,10 +48,10 @@ Bkz. `PROJE.md` genel bağlam için, `PROJE_KURALLARI.md` kod standartları içi
 
 ## 4. Faz 2 — Koloni Sistemi
 
-- [ ] Kedi veri modeli (`id`, `isim`, `unlockSaati`, `illüstrasyon`, `açıklama`)
-- [ ] Unlock mantığı: toplam biriken saate göre otomatik kilit açma
-- [ ] Koloni galerisi ekranı (grid, kilitli/açık durum, ilerleme yüzdesi)
-- [ ] Seans sonu ödül modalı (yeni kedi açıldıysa özel kutlama varyantı)
+- [x] Kedi veri modeli (`id`, `isim`, `unlockSaati`, `illüstrasyon` — şimdilik emoji, `açıklama` — locales'ta)
+- [x] Unlock mantığı: toplam biriken saate göre otomatik kilit açma
+- [x] Koloni galerisi ekranı (grid, kilitli/açık durum, ilerleme yüzdesi)
+- [x] Seans sonu ödül modalı (yeni kedi açıldıysa özel kutlama varyantı)
 - [ ] Streak mantığı: gün atlanırsa sıfırlama kuralı + "streak koruma" hakkı (ör. haftada 1 kez affet — kullanıcı deneyimini sertleştirmemek için)
 
 ## 5. Faz 3 — Mağaza ve Gelir

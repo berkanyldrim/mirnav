@@ -40,6 +40,15 @@
       "karamel": "Rarely seen, the reward of patience."
     }
   },
+  "reward": {
+    "newCatTitle": "{{cat}} joined the colony!",
+    "streakLabel": "Daily streak",
+    "totalFocusLabel": "Total focus",
+    "hoursValue": "{{hours}} h",
+    "share": "Share",
+    "close": "Great!",
+    "shareMessage": "I focused for {{minutes}} minutes on Mırnav and {{cat}} had a full meal 🐾"
+  },
   "store": {
     "title": "Store",
     "placeholder": "Cosmetic items will live here"

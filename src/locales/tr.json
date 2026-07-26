@@ -40,6 +40,15 @@
       "karamel": "Nadir görünür, sabrın ödülüdür."
     }
   },
+  "reward": {
+    "newCatTitle": "{{cat}} koloniye katıldı!",
+    "streakLabel": "Günlük seri",
+    "totalFocusLabel": "Toplam odak",
+    "hoursValue": "{{hours}} sa",
+    "share": "Paylaş",
+    "close": "Harika!",
+    "shareMessage": "Mırnav'da {{minutes}} dakika odaklandım, {{cat}} karnını doyurdu 🐾"
+  },
   "store": {
     "title": "Mağaza",
     "placeholder": "Kozmetik ürünler burada olacak"
