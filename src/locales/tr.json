@@ -5,9 +5,20 @@
     "store": "Mağaza",
     "settings": "Ayarlar"
   },
-  "focus": {
-    "title": "Odaklan",
-    "placeholder": "Odak sayacı burada olacak"
+  "home": {
+    "streakDays": "{{count}} gün",
+    "durationMinutes": "{{count}} dk",
+    "decreaseDuration": "Süreyi azalt",
+    "increaseDuration": "Süreyi artır",
+    "startSession": "Seansı Başlat",
+    "giveUp": "Vazgeç",
+    "newSession": "Yeni Seans",
+    "idleHint": "{{cat}} odaklanmanı bekliyor",
+    "runningHint": "{{cat}} seninle odaklanıyor",
+    "completedTitle": "Seans tamamlandı!",
+    "completedMessage": "{{cat}} karnını doyurdu, mırıl mırıl 🐾",
+    "failedTitle": "Bu sefer olmadı",
+    "failedMessage": "Sorun değil, {{cat}} seni bekliyor. Hazır olunca tekrar dene."
   },
   "colony": {
     "title": "Koloni",
