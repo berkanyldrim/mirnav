@@ -2,25 +2,24 @@
 
 Bkz. `PROJE.md` genel bağlam için.
 
-## 1. v1 İçin Karar: Backend Gerekli Değil
+## 1. v1 Kararı: Supabase ile Hesap + Senkron (2026-07-28'de güncellendi)
 
-MVP tamamen **local-first** kurgulanıyor — kullanıcı verisi cihazda (MMKV) tutuluyor, satın alma doğrulaması RevenueCat üzerinden yapılıyor. Bunun nedenleri:
+Önceki karar "v1'de backend yok, local-first" idi; Berkan'ın kararıyla değiştirildi (karar kaydı PROJE.md Bölüm 10'da). Yeni kapsam:
 
-- Sunucu maliyeti sıfır, ölçeklenme derdi yok
-- Gizlilik açısından avantajlı (kullanıcı hesabı/kimlik toplamıyoruz)
-- Geliştirme hızı artıyor — tek kişilik bir projede bakım yükü en büyük risk
+- **Kayıt/giriş zorunlu.** Yöntemler: e-posta+şifre (önce) + Google/Apple sosyal girişleri (development build'e geçince).
+- **Altyapı: Supabase** (Auth + Postgres + RLS). Uygulama `supabase-js` ile doğrudan konuşur — v1'de Fastify sunucusu YOK; özel API ihtiyacı (webhook, topluluk sayacı) doğunca eklenir.
+- **Yerel depo kalır** ama rolü değişir: önbellek/çevrimdışı katman. Kaynak-of-truth girişli kullanıcının Supabase'deki verisidir; çevrimdışı biriken veri bağlantı gelince push edilir.
+- Apple girişi App Store'da sosyal giriş sunulduğunda **zorunlu** (Apple politikası) ve Apple Developer hesabı ister; hesap silme akışı da store zorunluluğudur, v1'de olacak.
 
-**Sonuç:** v1 lansmanında bu dosyadaki görevlerin hiçbiri MVP kapsamında değil. Bu doküman v2 ve sonrası için bir plan niteliğinde.
+## 2. v1 Hesap/Senkron Görevleri
 
-## 2. v2 Tetikleyicileri
-
-Aşağıdaki sinyallerden biri gerçekleşirse backend çalışmasına başla:
-
-- Kullanıcılardan "yeni telefona geçtim, verim gitti" şikayeti gelmeye başlarsa → senkron ihtiyacı doğrulanmış demektir
-- Gerçek bağış ortaklığı (barınağa mama bağışı) kararlaştırılırsa → topluluk sayaç sistemi gerekir
-- Sosyal özellik (arkadaşlarla streak yarışı) talebi belirginleşirse
-
-Erken backend yatırımı yapmamak bilinçli bir tercih — talep kanıtlanmadan altyapı kurmak zaman israfı olur.
+- [ ] Supabase projesi kurulumu (Berkan: hesap + proje oluşturma; `EXPO_PUBLIC_SUPABASE_URL` ve `EXPO_PUBLIC_SUPABASE_ANON_KEY` env değerleri)
+- [ ] Şema: `profiles`, `sessions` (seans kayıtları), `progress` (toplam saat, streak, bestStreak, unlock durumu), `custom_tags`, `settings` — hepsi `user_id` ile, RLS "sadece kendi satırların"
+- [ ] `supabase-js` kurulumu, oturum persist (AsyncStorage adapter)
+- [ ] Kayıt/giriş ekranları (zorunlu gate: oturum yoksa uygulama açılışında auth ekranı)
+- [ ] Google/Apple girişleri (development build sonrası)
+- [ ] Senkron: girişte pull → yerel merge (en güncel `updatedAt` kazanır), seans bitiminde push, çevrimdışı kuyruk
+- [ ] Çıkış yap + hesap silme akışları (ayarlar ekranında)
 
 ## 3. v2 Teknoloji Yığını (öneri)
 

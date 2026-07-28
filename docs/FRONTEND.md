@@ -90,7 +90,18 @@ Katman ayrımı PROJE.md Bölüm 7'de. Free maddeler Pro'dan önce yapılır ki 
 - [ ] App Store / Play Store metadata (açıklama, ekran görüntüleri, gizlilik politikası sayfası)
 - [ ] Analitik (ör. PostHog veya Firebase Analytics — hangi ekranlarda terk edildiği görülebilsin)
 
-## 8. Teknik Notlar
+## 8. Faz 6 — Hesap ve Senkron (2026-07-28'de v1'e alındı)
+
+Detaylı görev listesi ve şema BACKEND.md Bölüm 2'de. Frontend tarafı:
+
+- [ ] `supabase-js` + env konfigürasyonu, oturum persist (AsyncStorage adapter)
+- [ ] Auth gate: oturum yoksa kayıt/giriş ekranı (uygulama girişsiz kullanılamaz)
+- [ ] Kayıt/giriş ekranları (e-posta+şifre; hata durumları nazik dille, i18n)
+- [ ] Google/Apple giriş butonları (development build sonrası)
+- [ ] Store senkron katmanı: girişte pull/merge, seans bitiminde push
+- [ ] Ayarlar: çıkış yap + hesap silme
+
+## 9. Teknik Notlar
 
 **Arka plan algılama mantığı (özet):**
 `AppState.addEventListener('change', ...)` ile `active` → `background` geçişini yakala. Geçiş anında seans state'ini `interrupted` olarak işaretle. Kullanıcı 3-5 saniye içinde geri dönerse (ör. bildirim çekmesi gibi kazara durumlar) toleranslı davran — anında ceza yerine kısa bir tolerans penceresi bırak, bu kullanıcı deneyimini sertleştirmez.
