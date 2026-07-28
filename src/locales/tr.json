@@ -24,6 +24,8 @@
   },
   "tags": {
     "label": "Etiket",
+    "searchOrCreate": "Etiket ara veya oluştur",
+    "createTag": "\"{{name}}\" etiketini oluştur",
     "work": "İş",
     "study": "Ders Çalışma",
     "social": "Sosyal",

@@ -70,7 +70,7 @@ Durum (2026-07-28): mağaza UI iskeleti hazır — Pro kartı (özellik listesi 
 Katman ayrımı PROJE.md Bölüm 7'de. Free maddeler Pro'dan önce yapılır ki paywall'da gösterilecek Pro farkı gerçek olsun.
 
 - [x] Etiket seçimi (free): seans başlatırken 7 varsayılan etiketten seçim (renkli çip + modal, `constants/tags.ts`)
-- [ ] Etiket yönetimi (free): özel etiket oluşturma/arama
+- [x] Etiket yönetimi (free): etiket seçicide arama + "oluştur" satırıyla özel etiket ekleme (`tagsStore`, renk paletten sırayla atanır); silme/düzenleme ertelendi
 - [x] Seans kaydı altyapısı: her seans tarih/süre/etiket/sonuç ile local geçmişe yazılır (`sessionLogStore`, 2000 kayıt tavanı — istatistik ve tünelin veri kaynağı)
 - [x] Temel istatistik ekranı (free): 5. sekme "İstatistik" — bugünkü odak/seans, seri, toplam saat/seans kartları (`features/stats/summary.ts`)
 - [x] Başarılar (free): 11 rozet — toplam saat (4/24/72/168/360), üst üste gün (3/7/30, kalıcı `bestStreak` üzerinden), seans sayısı (10/50/200); İstatistik sekmesinden ulaşılır (`app/achievements.tsx`, `constants/achievements.ts`)
