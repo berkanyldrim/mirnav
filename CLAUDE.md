@@ -2,7 +2,7 @@
 
 # Mırnav
 
-Forest tarzı, sokak kedisi temalı odaklanma uygulaması. React Native + Expo (managed), TypeScript, local-first — v1'de backend yok.
+Forest tarzı, sokak kedisi temalı odaklanma uygulaması. React Native + Expo (managed), TypeScript. v1'de Supabase ile zorunlu kullanıcı hesabı (e-posta+şifre, sonra Google/Apple) ve bulut senkronu; yerel depo çevrimdışı önbellek.
 
 ## Kaynak Öncelik Sırası
 

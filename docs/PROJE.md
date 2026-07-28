@@ -37,8 +37,9 @@ Seans yarıda kesilirse (uygulamadan çıkma/arka plana alma): seans başarısı
 - [ ] Mağaza ekranı (Pro abonelik paywall + kozmetik grid)
 - [ ] Bildirimler (günlük hatırlatma, isteğe bağlı)
 - [ ] Türkçe + İngilizce dil desteği (öncelik: Türkçe)
+- [ ] Kullanıcı hesabı: kayıt/giriş (zorunlu), verilerin bulutta saklanması ve cihazlar arası senkron (Supabase — bkz. BACKEND.md)
 
-**v1'de OLMAYACAKLAR:** kullanıcı hesabı/girişi, sosyal özellikler (arkadaş ekleme, liderlik tablosu), gerçek bağış entegrasyonu, çoklu cihaz senkronizasyonu. Bunlar v2 adayı.
+**v1'de OLMAYACAKLAR:** sosyal özellikler (arkadaş ekleme, liderlik tablosu), gerçek bağış entegrasyonu. Bunlar v2 adayı.
 
 ## 6. Ekranlar
 
@@ -82,8 +83,8 @@ Forest Plus'tan uyarlanan, kedi temasına çevrilmiş özellikler:
 ## 8. Teknoloji Yığını (özet — detaylar FRONTEND.md ve BACKEND.md'de)
 
 - **Frontend:** React Native + Expo (yönetilen iş akışı)
-- **Yerel depolama:** MMKV veya AsyncStorage (v1'de sunucu şart değil)
-- **Backend:** v1'de opsiyonel/minimal, v2'de senkron ve bağış özellikleri için Fastify + Supabase
+- **Yerel depolama:** MMKV veya AsyncStorage (önbellek/çevrimdışı katman; kaynak-of-truth girişten sonra Supabase)
+- **Backend:** v1'de Supabase (Auth + Postgres, uygulamadan supabase-js ile doğrudan); özel API ihtiyaçları doğarsa Fastify sonra eklenir
 - **IAP:** RevenueCat (App Store + Play Store makbuz doğrulamasını soyutlar, kendi backend'imizi büyütmeden başlamamızı sağlar)
 
 ## 9. Farklılaşma / Neden Bu İş Modeli
@@ -95,6 +96,7 @@ Forest Plus'tan uyarlanan, kedi temasına çevrilmiş özellikler:
 ## 10. Açık Sorular / Kararlaştırılacaklar
 
 - **Karar kaydı (2026-07-28):** gelir modeli "tek seferlik Pro (~₺49,90) + tekil kozmetik" yerine "Pro aboneliği (7 gün deneme + aylık/yıllık) + tekil kozmetik" olarak değiştirildi. Ödül çarpanı (Forest 3x) bilinçli olarak alınmadı — pay-to-progress yasağı korundu. Katman ayrımı Bölüm 7'de.
+- **Karar kaydı (2026-07-28, hesap):** "v1'de backend yok / local-first" kararı değiştirildi. Kullanıcı hesabı v1'e alındı: kayıt/giriş **zorunlu**, yöntem e-posta+şifre + Google/Apple sosyal girişleri, altyapı Supabase (Auth + Postgres). Veriler kullanıcı hesabında saklanır, yerel depo önbellek/çevrimdışı katman olur. Riskler not edildi: zorunlu giriş onboarding sürtünmesi yaratır; Apple girişi Apple Developer hesabı + development build ister; sosyal girişler development build'e kadar bekler, e-posta+şifre önce gelir.
 - Pro kesin fiyat noktaları (taslak ~₺39,90/ay, ~₺399/yıl) ve yıllık indirim oranı
 - Mevsimlik özel kedilerin üretim ritmi (sezon başına kaç kedi, hangi dönemler)
 - Gerçek bir hayvan barınağıyla bağış ortaklığı yapılacak mı (v2 fikri, pazarlama değeri yüksek ama operasyonel yük getirir)
