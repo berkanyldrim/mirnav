@@ -9,3 +9,5 @@ export const CustomDurationMinutes = {
 } as const;
 
 export const BackgroundGraceSeconds = 5;
+
+export const StreakProtectionCooldownDays = 7;

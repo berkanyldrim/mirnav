@@ -52,7 +52,7 @@ Bkz. `PROJE.md` genel bağlam için, `PROJE_KURALLARI.md` kod standartları içi
 - [x] Unlock mantığı: toplam biriken saate göre otomatik kilit açma
 - [x] Koloni galerisi ekranı (grid, kilitli/açık durum, ilerleme yüzdesi)
 - [x] Seans sonu ödül modalı (yeni kedi açıldıysa özel kutlama varyantı)
-- [ ] Streak mantığı: gün atlanırsa sıfırlama kuralı + "streak koruma" hakkı (ör. haftada 1 kez affet — kullanıcı deneyimini sertleştirmemek için)
+- [x] Streak mantığı: gün atlanırsa sıfırlama kuralı + "streak koruma" hakkı (tek günlük boşluğu 7 günde 1 otomatik affeder; cooldown `constants/session.ts` `StreakProtectionCooldownDays`)
 
 ## 5. Faz 3 — Mağaza ve Gelir
 

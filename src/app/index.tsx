@@ -26,6 +26,7 @@ export default function FocusScreen() {
   const durationMinutes = useSessionStore((state) => state.durationMinutes);
   const currentStreak = useSessionStore((state) => state.currentStreak);
   const lastCompletedDate = useSessionStore((state) => state.lastCompletedDate);
+  const lastProtectionDate = useSessionStore((state) => state.lastProtectionDate);
   const selectDuration = useSessionStore((state) => state.selectDuration);
   const startSession = useSessionStore((state) => state.startSession);
   const failSession = useSessionStore((state) => state.failSession);
@@ -35,7 +36,12 @@ export default function FocusScreen() {
   useAppStateGuard();
 
   const activeCat = findCatById(activeCatId);
-  const displayStreak = getDisplayStreak(lastCompletedDate, currentStreak, toDateKey(new Date()));
+  const displayStreak = getDisplayStreak(
+    lastCompletedDate,
+    currentStreak,
+    toDateKey(new Date()),
+    lastProtectionDate,
+  );
   const ringSize = Math.min(width - Spacing.five * 2, 280);
   const progress = status === 'running' ? remainingSeconds / totalSeconds : 1;
 
