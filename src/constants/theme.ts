@@ -16,6 +16,7 @@ export const Colors = {
     textSecondary: '#60646C',
     accent: '#EA580C',
     accentForeground: '#FFFFFF',
+    chart: '#EA580C',
   },
   dark: {
     text: '#ffffff',
@@ -25,6 +26,7 @@ export const Colors = {
     textSecondary: '#B0B4BA',
     accent: '#F97316',
     accentForeground: '#FFFFFF',
+    chart: '#EA580C',
   },
 } as const;
 

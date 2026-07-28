@@ -118,6 +118,22 @@ export default function StatsScreen() {
               </View>
               <Ionicons name="chevron-forward" size={18} color={theme.textSecondary} />
             </Pressable>
+            <Pressable
+              onPress={() => router.push('/detailed-stats')}
+              accessibilityRole="button"
+              accessibilityLabel={t('detailedStats.title')}
+              style={[styles.linkRow, { backgroundColor: theme.backgroundElement }]}>
+              <Ionicons name="bar-chart-outline" size={20} color={theme.accent} />
+              <ThemedText type="smallBold" style={styles.linkLabel}>
+                {t('detailedStats.title')}
+              </ThemedText>
+              <View style={[styles.proBadge, { backgroundColor: theme.accent }]}>
+                <ThemedText type="small" style={{ color: theme.accentForeground }}>
+                  {t('store.pro.badge')}
+                </ThemedText>
+              </View>
+              <Ionicons name="chevron-forward" size={18} color={theme.textSecondary} />
+            </Pressable>
           </View>
         </View>
       </SafeAreaView>

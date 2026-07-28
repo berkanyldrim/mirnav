@@ -130,8 +130,18 @@
     "minutesValue": "{{count}} min",
     "empty": "No sessions logged yet. Start your first one!",
     "proTitle": "Timeline is a Pro feature",
-    "proMessage": "Upgrade to Mırnav Pro to see your full session history.",
-    "proCta": "Go to store"
+    "proMessage": "Upgrade to Mırnav Pro to see your full session history."
+  },
+  "detailedStats": {
+    "title": "Detailed Stats",
+    "day": "Day",
+    "week": "Week",
+    "month": "Month",
+    "year": "Year",
+    "periodTotal": "Total: {{minutes}} min",
+    "selectedValue": "{{label}}: {{minutes}} min",
+    "proTitle": "Detailed stats are a Pro feature",
+    "proMessage": "Upgrade to Mırnav Pro to see day, week, month, and year charts."
   },
   "store": {
     "title": "Store",
@@ -146,7 +156,8 @@
       },
       "cta": "Try {{count}} days free",
       "priceNote": "Then {{yearly}}/year or {{monthly}}/month. Cancel anytime.",
-      "comingSoon": "Purchases will be available soon"
+      "comingSoon": "Purchases will be available soon",
+      "gateCta": "Go to store"
     },
     "cosmetics": {
       "label": "Cosmetics",
