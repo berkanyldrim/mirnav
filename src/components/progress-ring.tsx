@@ -18,14 +18,15 @@ export function ProgressRing({
   ...rest
 }: ProgressRingProps) {
   const theme = useTheme();
-  const center = size / 2;
-  const radius = (size - strokeWidth) / 2;
+  const safeSize = Math.max(size, strokeWidth);
+  const center = safeSize / 2;
+  const radius = (safeSize - strokeWidth) / 2;
   const circumference = 2 * Math.PI * radius;
   const clampedProgress = Math.min(1, Math.max(0, progress));
 
   return (
-    <View style={[{ width: size, height: size }, styles.container, style]} {...rest}>
-      <Svg width={size} height={size} style={styles.svg}>
+    <View style={[{ width: safeSize, height: safeSize }, styles.container, style]} {...rest}>
+      <Svg width={safeSize} height={safeSize} style={styles.svg}>
         <Circle
           cx={center}
           cy={center}

@@ -48,7 +48,7 @@ export default function FocusScreen() {
     toDateKey(new Date()),
     lastProtectionDate,
   );
-  const ringSize = Math.min(width - Spacing.five * 2, 280);
+  const ringSize = Math.max(Math.min(width - Spacing.five * 2, 280), 120);
   const progress = status === 'running' ? remainingSeconds / totalSeconds : 1;
 
   const changeDuration = (delta: number) => {
