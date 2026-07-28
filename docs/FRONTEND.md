@@ -82,7 +82,7 @@ Katman ayrımı PROJE.md Bölüm 7'de. Free maddeler Pro'dan önce yapılır ki 
 ## 7. Faz 5 — Cila ve Yayına Hazırlık
 
 - [ ] Bildirim planlama (günlük hatırlatma, kullanıcı ayarlardan kapatabilmeli)
-- [ ] Onboarding akışı (3 ekranlık kısa tanıtım, atlanabilir)
+- [x] Onboarding akışı (3 ekranlık kısa tanıtım, atlanabilir — `features/onboarding/`, `_layout` hydration bekleyip gate'liyor; hesap zorunlu olunca auth gate'in önüne alınacak)
 - [ ] Başlangıç Görevleri: ilk açılışta 2-3 görevlik liste (ör. "1 seans tamamla", "koloniyi ziyaret et"), ödül ilk kedinin tanıtımı — satın alma içermez, Forest "Başlangıç Mücadelesi" uyarlaması
 - [ ] Karanlık mod desteği
 - [ ] Türkçe/İngilizce dil geçişi test
