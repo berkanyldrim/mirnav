@@ -51,7 +51,31 @@
   },
   "store": {
     "title": "Mağaza",
-    "placeholder": "Kozmetik ürünler burada olacak"
+    "pro": {
+      "title": "Mırnav Pro",
+      "badge": "Pro",
+      "features": {
+        "stats": "Detaylı istatistikler: gün, hafta, ay, yıl görünümleri",
+        "timeline": "Zaman Tüneli: tüm seans geçmişin",
+        "seasonalCats": "Mevsimlik özel kediler",
+        "cosmetics": "Tüm kozmetikler dahil"
+      },
+      "cta": "{{count}} gün ücretsiz dene",
+      "priceNote": "Sonra yıllık {{yearly}} veya aylık {{monthly}}. İstediğin zaman iptal edebilirsin.",
+      "comingSoon": "Satın alma yakında aktif olacak"
+    },
+    "cosmetics": {
+      "label": "Kozmetikler",
+      "includedBadge": "Pro'da dahil",
+      "items": {
+        "redScarf": "Kırmızı Atkı",
+        "fishermanHat": "Balıkçı Şapkası",
+        "bowTie": "Papyon",
+        "autumnStreet": "Sonbahar Mahallesi",
+        "snowyRooftops": "Karlı Çatılar",
+        "summerSeaside": "Yaz Sahili"
+      }
+    }
   },
   "settings": {
     "title": "Ayarlar",

@@ -56,10 +56,12 @@ Bkz. `PROJE.md` genel bağlam için, `PROJE_KURALLARI.md` kod standartları içi
 
 ## 5. Faz 3 — Mağaza ve Gelir
 
+Durum (2026-07-28): mağaza UI iskeleti hazır — Pro kartı (özellik listesi + CTA + fiyat/deneme notu), kozmetik grid, `entitlementStore` (local). Satın alma pasif; RevenueCat ve Free/Pro karşılaştırma tablosu bekliyor.
+
 - [ ] RevenueCat abonelik entegrasyonu: aylık/yıllık Pro + 7 gün deneme (App Store Connect + Play Console'da eşleşen ürün ID'leri)
 - [ ] Paywall UI: Free/Pro karşılaştırma tablosu, tek net CTA, deneme/yenileme koşulları açıkça yazılır
 - [ ] Kozmetik grid + tekil kozmetik IAP (Pro abonelerinde tümü açık gösterilir)
-- [ ] `entitlementStore`: Pro abonelik ve kozmetik sahipliği durumu (local persist, RevenueCat ile senkron)
+- [x] `entitlementStore`: Pro abonelik ve kozmetik sahipliği durumu (local persist; RevenueCat senkronu entegrasyonla gelecek)
 - [ ] Satın alma sonrası unlock mantığı (kozmetik kedi kıyafeti/temanın anında yansıması)
 - [ ] "Satın alımları geri yükle" akışı (Apple/Google zorunlu kılıyor) + ayarlarda abonelik yönetimi bağlantısı
 
