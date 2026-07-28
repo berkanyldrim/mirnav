@@ -5,7 +5,7 @@ Bu doküman kod yazarken, tasarım kararı alırken ve ürün kararı verirken r
 ## 1. Ürün Felsefesi
 
 - **Reklam asla yok.** Bu, kullanıcıya verilen bir söz — hiçbir büyüme baskısı bu kuralı değiştirmemeli.
-- **Kozmetik satış = etik sınır.** Hiçbir satın alma odaklanma deneyimini "kolaylaştırmamalı" (ör. parayla sahte seans tamamlama gibi bir şey asla eklenmeyecek). Sadece görsel/koleksiyon değeri satılır.
+- **Satın alma = etik sınır.** Gelir modeli Mırnav Pro aboneliği + tekil kozmetik satıştır (bkz. PROJE.md Bölüm 7). Hiçbir satın alma odaklanma deneyimini "kolaylaştırmamalı" (parayla sahte seans tamamlama asla) ve ilerlemeyi (kedi kilidi, streak) hızlandırmamalı — ödül çarpanı satılmaz. Pro; ek özellik, mevsimlik içerik ve kozmetik sunar; çekirdek odak döngüsü (sınırsız seans, koloni, streak) her zaman ücretsizdir.
 - **Suçluluk duygusu üzerinden büyüme yok.** Streak kırıldığında, seans yarım kaldığında kullanıcıyı utandıran dil/tasarım kullanılmaz. Nazik, teşvik edici ton esas.
 - **Basit kalsın.** Her yeni özellik eklenmeden önce "bu, temel deneyimi karmaşıklaştırıyor mu?" sorusu sorulur. Cevap evetse özellik ya sadeleştirilir ya da ertelenir.
 
@@ -67,6 +67,7 @@ Bu doküman kod yazarken, tasarım kararı alırken ve ürün kararı verirken r
 ## 6. Mağaza / Gelir Kuralları
 
 - Paywall'da **tek net CTA** olur, kullanıcıyı çoklu seçenekle boğmayız.
+- **Abonelik şeffaflığı:** deneme süresi, yenileme koşulları ve fiyat paywall'da açıkça yazılır ("7 gün ücretsiz, sonra ₺X/yıl" formatında); iptal yolu gizlenmez, ayarlardan aboneliği yönetme bağlantısı verilir.
 - Fiyatlar yerel para biriminde (₺) gösterilir, store'un otomatik kur çevrimine güvenilir.
 - Hiçbir satın alma "geri sayımlı sahte indirim" gibi baskı taktikleriyle sunulmaz (App Store/Play Store politikalarına da aykırı, kullanıcı güvenini de zedeler).
 - "Satın alımları geri yükle" seçeneği her zaman ayarlar ekranında görünür olmalı.
