@@ -51,7 +51,31 @@
   },
   "store": {
     "title": "Store",
-    "placeholder": "Cosmetic items will live here"
+    "pro": {
+      "title": "Mırnav Pro",
+      "badge": "Pro",
+      "features": {
+        "stats": "Detailed statistics: day, week, month, year views",
+        "timeline": "Timeline: your full session history",
+        "seasonalCats": "Seasonal exclusive cats",
+        "cosmetics": "All cosmetics included"
+      },
+      "cta": "Try {{count}} days free",
+      "priceNote": "Then {{yearly}}/year or {{monthly}}/month. Cancel anytime.",
+      "comingSoon": "Purchases will be available soon"
+    },
+    "cosmetics": {
+      "label": "Cosmetics",
+      "includedBadge": "Included in Pro",
+      "items": {
+        "redScarf": "Red Scarf",
+        "fishermanHat": "Fisherman's Hat",
+        "bowTie": "Bow Tie",
+        "autumnStreet": "Autumn Street",
+        "snowyRooftops": "Snowy Rooftops",
+        "summerSeaside": "Summer Seaside"
+      }
+    }
   },
   "settings": {
     "title": "Settings",
