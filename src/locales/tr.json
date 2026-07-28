@@ -18,7 +18,18 @@
     "completedTitle": "Seans tamamlandı!",
     "completedMessage": "{{cat}} karnını doyurdu, mırıl mırıl 🐾",
     "failedTitle": "Bu sefer olmadı",
-    "failedMessage": "Sorun değil, {{cat}} seni bekliyor. Hazır olunca tekrar dene."
+    "failedMessage": "Sorun değil, {{cat}} seni bekliyor. Hazır olunca tekrar dene.",
+    "selectTag": "Etiket seç"
+  },
+  "tags": {
+    "label": "Etiket",
+    "work": "İş",
+    "study": "Ders Çalışma",
+    "social": "Sosyal",
+    "rest": "Dinlenme",
+    "fun": "Eğlence",
+    "sport": "Spor",
+    "other": "Diğer"
   },
   "colony": {
     "title": "Koloni",

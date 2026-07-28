@@ -18,7 +18,18 @@
     "completedTitle": "Session complete!",
     "completedMessage": "{{cat}} had a full meal, purring happily 🐾",
     "failedTitle": "Not this time",
-    "failedMessage": "No worries, {{cat}} is still waiting. Try again when you are ready."
+    "failedMessage": "No worries, {{cat}} is still waiting. Try again when you are ready.",
+    "selectTag": "Select tag"
+  },
+  "tags": {
+    "label": "Tag",
+    "work": "Work",
+    "study": "Study",
+    "social": "Social",
+    "rest": "Rest",
+    "fun": "Fun",
+    "sport": "Sport",
+    "other": "Other"
   },
   "colony": {
     "title": "Colony",

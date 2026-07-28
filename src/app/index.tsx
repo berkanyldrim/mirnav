@@ -1,4 +1,5 @@
 import { Ionicons } from '@expo/vector-icons';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Pressable, StyleSheet, useWindowDimensions, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -8,12 +9,14 @@ import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
 import { findCatById } from '@/constants/cats';
 import { CustomDurationMinutes, FocusDurationOptionsMinutes } from '@/constants/session';
+import { findTagById } from '@/constants/tags';
 import { Spacing } from '@/constants/theme';
 import { useColonyStore } from '@/features/colony/colony-store';
 import { formatClock } from '@/features/focus-session/format-time';
 import { SessionRewardModal } from '@/features/focus-session/session-reward-modal';
 import { useSessionStore } from '@/features/focus-session/session-store';
 import { getDisplayStreak, toDateKey } from '@/features/focus-session/streak';
+import { TagPickerModal } from '@/features/focus-session/tag-picker-modal';
 import { useAppStateGuard } from '@/features/focus-session/use-app-state-guard';
 import { useSessionClock } from '@/features/focus-session/use-session-clock';
 import { useTheme } from '@/hooks/use-theme';
@@ -31,10 +34,13 @@ export default function FocusScreen() {
   const startSession = useSessionStore((state) => state.startSession);
   const failSession = useSessionStore((state) => state.failSession);
   const resetSession = useSessionStore((state) => state.resetSession);
+  const tagId = useSessionStore((state) => state.tagId);
   const activeCatId = useColonyStore((state) => state.activeCatId);
   const { remainingSeconds, totalSeconds } = useSessionClock();
   useAppStateGuard();
+  const [tagPickerVisible, setTagPickerVisible] = useState(false);
 
+  const activeTag = findTagById(tagId);
   const activeCat = findCatById(activeCatId);
   const displayStreak = getDisplayStreak(
     lastCompletedDate,
@@ -72,6 +78,18 @@ export default function FocusScreen() {
               <ThemedText style={styles.catEmoji}>{activeCat.emoji}</ThemedText>
               <ThemedText type="subtitle">{formatClock(remainingSeconds)}</ThemedText>
             </ProgressRing>
+            <Pressable
+              disabled={status !== 'idle'}
+              onPress={() => setTagPickerVisible(true)}
+              accessibilityRole="button"
+              accessibilityLabel={t('home.selectTag')}
+              style={[styles.tagChip, { backgroundColor: theme.backgroundElement }]}>
+              <View style={[styles.tagDot, { backgroundColor: activeTag.color }]} />
+              <ThemedText type="small">{t(`tags.${activeTag.id}`)}</ThemedText>
+              {status === 'idle' && (
+                <Ionicons name="pencil" size={12} color={theme.textSecondary} />
+              )}
+            </Pressable>
             <ThemedText themeColor="textSecondary" style={styles.hint}>
               {status === 'running' && t('home.runningHint', { cat: activeCat.name })}
               {status === 'idle' && t('home.idleHint', { cat: activeCat.name })}
@@ -150,6 +168,7 @@ export default function FocusScreen() {
           </View>
         </View>
         <SessionRewardModal />
+        <TagPickerModal visible={tagPickerVisible} onClose={() => setTagPickerVisible(false)} />
       </SafeAreaView>
     </ThemedView>
   );
@@ -192,6 +211,19 @@ const styles = StyleSheet.create({
   catEmoji: {
     fontSize: 48,
     lineHeight: 56,
+  },
+  tagChip: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: Spacing.two,
+    borderRadius: 999,
+    paddingVertical: Spacing.one,
+    paddingHorizontal: Spacing.three,
+  },
+  tagDot: {
+    width: 10,
+    height: 10,
+    borderRadius: 999,
   },
   hint: {
     textAlign: 'center',

@@ -69,8 +69,9 @@ Durum (2026-07-28): mağaza UI iskeleti hazır — Pro kartı (özellik listesi 
 
 Katman ayrımı PROJE.md Bölüm 7'de. Free maddeler Pro'dan önce yapılır ki paywall'da gösterilecek Pro farkı gerçek olsun.
 
-- [ ] Etiketler (free): seans başlatırken etiket seçimi, etiket yönetimi (renkli liste, arama/oluşturma)
-- [ ] Seans kaydı altyapısı: her seans tarih/süre/etiket/sonuç ile local geçmişe yazılır (istatistik ve tünelin veri kaynağı)
+- [x] Etiket seçimi (free): seans başlatırken 7 varsayılan etiketten seçim (renkli çip + modal, `constants/tags.ts`)
+- [ ] Etiket yönetimi (free): özel etiket oluşturma/arama
+- [x] Seans kaydı altyapısı: her seans tarih/süre/etiket/sonuç ile local geçmişe yazılır (`sessionLogStore`, 2000 kayıt tavanı — istatistik ve tünelin veri kaynağı)
 - [ ] Temel istatistik ekranı (free): toplam saat, seri, bugünün özeti
 - [ ] Başarılar (free): toplam odak saati + üst üste gün rozetleri
 - [ ] Detaylı istatistikler (Pro): gün/hafta/ay/yıl görünümleri, odak dağılım grafiği, günün koloni görünümü

@@ -11,3 +11,5 @@ export const CustomDurationMinutes = {
 export const BackgroundGraceSeconds = 5;
 
 export const StreakProtectionCooldownDays = 7;
+
+export const MaxSessionRecords = 2000;
