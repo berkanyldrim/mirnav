@@ -13,8 +13,10 @@ export const Tags: Tag[] = [
   { id: 'other', color: '#818CF8' },
 ];
 
+export type CustomTag = Tag & {
+  name: string;
+};
+
 export const DefaultTag = Tags[1];
 
-export function findTagById(tagId: string) {
-  return Tags.find((tag) => tag.id === tagId) ?? DefaultTag;
-}
+export const CustomTagColors = Tags.map((tag) => tag.color);

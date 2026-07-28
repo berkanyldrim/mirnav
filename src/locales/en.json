@@ -24,6 +24,8 @@
   },
   "tags": {
     "label": "Tag",
+    "searchOrCreate": "Search or create a tag",
+    "createTag": "Create tag \"{{name}}\"",
     "work": "Work",
     "study": "Study",
     "social": "Social",

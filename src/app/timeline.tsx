@@ -5,13 +5,14 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
-import { findTagById } from '@/constants/tags';
 import { Spacing } from '@/constants/theme';
 import { SessionRecord } from '@/features/focus-session/session-log';
 import { useSessionLogStore } from '@/features/focus-session/session-log-store';
 import { toDateKey } from '@/features/focus-session/streak';
 import { useEntitlementStore } from '@/features/store/entitlement-store';
 import { ProTeaser } from '@/features/store/pro-teaser';
+import { findTag, isCustomTag } from '@/features/tags/resolve';
+import { useTagsStore } from '@/features/tags/tags-store';
 import { groupRecordsByDate } from '@/features/timeline/group-records';
 import { useTheme } from '@/hooks/use-theme';
 
@@ -19,6 +20,7 @@ export default function TimelineScreen() {
   const { t, i18n } = useTranslation();
   const theme = useTheme();
   const records = useSessionLogStore((state) => state.records);
+  const customTags = useTagsStore((state) => state.customTags);
   const isPro = useEntitlementStore((state) => state.isPro);
 
   const today = toDateKey(new Date());
@@ -33,7 +35,7 @@ export default function TimelineScreen() {
 
   const renderRecord = ({ item }: { item: SessionRecord }) => {
     const completed = item.outcome === 'completed';
-    const tag = findTagById(item.tagId);
+    const tag = findTag(item.tagId, customTags);
     const time = new Date(item.endedAt).toLocaleTimeString(i18n.language, {
       hour: '2-digit',
       minute: '2-digit',
@@ -53,7 +55,8 @@ export default function TimelineScreen() {
           <View style={styles.recordMetaRow}>
             <View style={[styles.tagDot, { backgroundColor: tag.color }]} />
             <ThemedText type="small" themeColor="textSecondary">
-              {t(`tags.${tag.id}`)} · {t('timeline.minutesValue', { count: item.durationMinutes })}
+              {isCustomTag(tag) ? tag.name : t(`tags.${tag.id}`)} ·{' '}
+              {t('timeline.minutesValue', { count: item.durationMinutes })}
             </ThemedText>
           </View>
         </View>

@@ -9,7 +9,6 @@ import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
 import { findCatById } from '@/constants/cats';
 import { CustomDurationMinutes, FocusDurationOptionsMinutes } from '@/constants/session';
-import { findTagById } from '@/constants/tags';
 import { Spacing } from '@/constants/theme';
 import { useColonyStore } from '@/features/colony/colony-store';
 import { formatClock } from '@/features/focus-session/format-time';
@@ -19,6 +18,8 @@ import { getDisplayStreak, toDateKey } from '@/features/focus-session/streak';
 import { TagPickerModal } from '@/features/focus-session/tag-picker-modal';
 import { useAppStateGuard } from '@/features/focus-session/use-app-state-guard';
 import { useSessionClock } from '@/features/focus-session/use-session-clock';
+import { findTag, isCustomTag } from '@/features/tags/resolve';
+import { useTagsStore } from '@/features/tags/tags-store';
 import { useTheme } from '@/hooks/use-theme';
 
 export default function FocusScreen() {
@@ -35,12 +36,13 @@ export default function FocusScreen() {
   const failSession = useSessionStore((state) => state.failSession);
   const resetSession = useSessionStore((state) => state.resetSession);
   const tagId = useSessionStore((state) => state.tagId);
+  const customTags = useTagsStore((state) => state.customTags);
   const activeCatId = useColonyStore((state) => state.activeCatId);
   const { remainingSeconds, totalSeconds } = useSessionClock();
   useAppStateGuard();
   const [tagPickerVisible, setTagPickerVisible] = useState(false);
 
-  const activeTag = findTagById(tagId);
+  const activeTag = findTag(tagId, customTags);
   const activeCat = findCatById(activeCatId);
   const displayStreak = getDisplayStreak(
     lastCompletedDate,
@@ -85,7 +87,9 @@ export default function FocusScreen() {
               accessibilityLabel={t('home.selectTag')}
               style={[styles.tagChip, { backgroundColor: theme.backgroundElement }]}>
               <View style={[styles.tagDot, { backgroundColor: activeTag.color }]} />
-              <ThemedText type="small">{t(`tags.${activeTag.id}`)}</ThemedText>
+              <ThemedText type="small">
+                {isCustomTag(activeTag) ? activeTag.name : t(`tags.${activeTag.id}`)}
+              </ThemedText>
               {status === 'idle' && (
                 <Ionicons name="pencil" size={12} color={theme.textSecondary} />
               )}
