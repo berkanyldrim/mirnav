@@ -1,7 +1,8 @@
 import { Ionicons } from '@expo/vector-icons';
+import { useRouter } from 'expo-router';
 import { ComponentProps } from 'react';
 import { useTranslation } from 'react-i18next';
-import { StyleSheet, View } from 'react-native';
+import { Pressable, StyleSheet, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { ThemedText } from '@/components/themed-text';
@@ -35,6 +36,8 @@ function StatCard({ icon, value, label }: StatCardProps) {
 
 export default function StatsScreen() {
   const { t, i18n } = useTranslation();
+  const theme = useTheme();
+  const router = useRouter();
   const records = useSessionLogStore((state) => state.records);
   const totalFocusSeconds = useSessionStore((state) => state.totalFocusSeconds);
   const completedSessionCount = useSessionStore((state) => state.completedSessionCount);
@@ -87,6 +90,22 @@ export default function StatsScreen() {
               label={t('stats.totalSessionsLabel')}
             />
           </View>
+          <Pressable
+            onPress={() => router.push('/timeline')}
+            accessibilityRole="button"
+            accessibilityLabel={t('timeline.title')}
+            style={[styles.timelineRow, { backgroundColor: theme.backgroundElement }]}>
+            <Ionicons name="git-commit-outline" size={20} color={theme.accent} />
+            <ThemedText type="smallBold" style={styles.timelineLabel}>
+              {t('timeline.title')}
+            </ThemedText>
+            <View style={[styles.proBadge, { backgroundColor: theme.accent }]}>
+              <ThemedText type="small" style={{ color: theme.accentForeground }}>
+                {t('store.pro.badge')}
+              </ThemedText>
+            </View>
+            <Ionicons name="chevron-forward" size={18} color={theme.textSecondary} />
+          </Pressable>
         </View>
       </SafeAreaView>
     </ThemedView>
@@ -121,5 +140,20 @@ const styles = StyleSheet.create({
   },
   cardLabel: {
     textAlign: 'left',
+  },
+  timelineRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: Spacing.two,
+    borderRadius: 16,
+    padding: Spacing.three,
+  },
+  timelineLabel: {
+    flex: 1,
+  },
+  proBadge: {
+    borderRadius: 999,
+    paddingVertical: Spacing.half,
+    paddingHorizontal: Spacing.two,
   },
 });
