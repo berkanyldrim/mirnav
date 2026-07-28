@@ -40,6 +40,15 @@ export default function RootLayout() {
           }}
         />
         <Tabs.Screen
+          name="stats"
+          options={{
+            title: t('tabs.stats'),
+            tabBarIcon: ({ color, size }) => (
+              <Ionicons name="stats-chart-outline" size={size} color={color} />
+            ),
+          }}
+        />
+        <Tabs.Screen
           name="store"
           options={{
             title: t('tabs.store'),

@@ -2,6 +2,7 @@
   "tabs": {
     "focus": "Focus",
     "colony": "Colony",
+    "stats": "Stats",
     "store": "Store",
     "settings": "Settings"
   },
@@ -59,6 +60,17 @@
     "share": "Share",
     "close": "Great!",
     "shareMessage": "I focused for {{minutes}} minutes on Mırnav and {{cat}} had a full meal 🐾"
+  },
+  "stats": {
+    "title": "Stats",
+    "todayFocusLabel": "Today's focus",
+    "todaySessionsLabel": "Today's sessions",
+    "streakLabel": "Daily streak",
+    "totalFocusLabel": "Total focus",
+    "totalSessionsLabel": "Completed sessions",
+    "minutesValue": "{{count}} min",
+    "daysValue": "{{count}} days",
+    "hoursValue": "{{hours}} h"
   },
   "store": {
     "title": "Store",

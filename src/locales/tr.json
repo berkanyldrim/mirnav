@@ -2,6 +2,7 @@
   "tabs": {
     "focus": "Odak",
     "colony": "Koloni",
+    "stats": "İstatistik",
     "store": "Mağaza",
     "settings": "Ayarlar"
   },
@@ -59,6 +60,17 @@
     "share": "Paylaş",
     "close": "Harika!",
     "shareMessage": "Mırnav'da {{minutes}} dakika odaklandım, {{cat}} karnını doyurdu 🐾"
+  },
+  "stats": {
+    "title": "İstatistik",
+    "todayFocusLabel": "Bugünkü odak",
+    "todaySessionsLabel": "Bugünkü seans",
+    "streakLabel": "Günlük seri",
+    "totalFocusLabel": "Toplam odak",
+    "totalSessionsLabel": "Tamamlanan seans",
+    "minutesValue": "{{count}} dk",
+    "daysValue": "{{count}} gün",
+    "hoursValue": "{{hours}} sa"
   },
   "store": {
     "title": "Mağaza",
