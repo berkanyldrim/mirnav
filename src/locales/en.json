@@ -55,6 +55,11 @@
   },
   "settings": {
     "title": "Settings",
-    "placeholder": "App settings will live here"
+    "language": {
+      "label": "Language",
+      "system": "System language",
+      "tr": "Türkçe",
+      "en": "English"
+    }
   }
 }
