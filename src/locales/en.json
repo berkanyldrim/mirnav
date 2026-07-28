@@ -22,6 +22,25 @@
     "failedMessage": "No worries, {{cat}} is still waiting. Try again when you are ready.",
     "selectTag": "Select tag"
   },
+  "onboarding": {
+    "skip": "Skip",
+    "next": "Next",
+    "start": "Start",
+    "steps": {
+      "intro": {
+        "title": "Welcome to Mırnav",
+        "message": "Put the phone down and focus — when the session ends, Boncuk gets a full meal."
+      },
+      "colony": {
+        "title": "Grow the colony",
+        "message": "As focus hours add up, new street cats join your colony."
+      },
+      "streak": {
+        "title": "Protect your streak",
+        "message": "Complete a session every day. We forgive a one-day gap once a week."
+      }
+    }
+  },
   "tags": {
     "label": "Tag",
     "searchOrCreate": "Search or create a tag",

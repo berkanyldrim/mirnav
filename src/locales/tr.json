@@ -22,6 +22,25 @@
     "failedMessage": "Sorun değil, {{cat}} seni bekliyor. Hazır olunca tekrar dene.",
     "selectTag": "Etiket seç"
   },
+  "onboarding": {
+    "skip": "Atla",
+    "next": "İleri",
+    "start": "Başla",
+    "steps": {
+      "intro": {
+        "title": "Mırnav'a hoş geldin",
+        "message": "Telefonu bırak, odaklan — seans bitince Boncuk karnını doyurur."
+      },
+      "colony": {
+        "title": "Koloni büyüsün",
+        "message": "Biriken odak saatleriyle yeni sokak kedileri koloniye katılır."
+      },
+      "streak": {
+        "title": "Serini koru",
+        "message": "Her gün bir seans tamamla. Bir günlük boşluğu haftada bir kez affederiz."
+      }
+    }
+  },
   "tags": {
     "label": "Etiket",
     "searchOrCreate": "Etiket ara veya oluştur",

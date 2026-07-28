@@ -2,15 +2,34 @@ import '@/lib/i18n';
 
 import { Ionicons } from '@expo/vector-icons';
 import { DarkTheme, DefaultTheme, ThemeProvider, Tabs } from 'expo-router';
+import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useColorScheme } from 'react-native';
 
 import { Colors } from '@/constants/theme';
+import { OnboardingFlow } from '@/features/onboarding/onboarding-flow';
+import { useOnboardingStore } from '@/features/onboarding/onboarding-store';
 
 export default function RootLayout() {
   const scheme = useColorScheme();
   const { t } = useTranslation();
   const colors = Colors[scheme === 'dark' ? 'dark' : 'light'];
+  const onboardingCompleted = useOnboardingStore((state) => state.completed);
+  const [hydrated, setHydrated] = useState(useOnboardingStore.persist.hasHydrated());
+
+  useEffect(() => useOnboardingStore.persist.onFinishHydration(() => setHydrated(true)), []);
+
+  if (!hydrated) {
+    return null;
+  }
+
+  if (!onboardingCompleted) {
+    return (
+      <ThemeProvider value={scheme === 'dark' ? DarkTheme : DefaultTheme}>
+        <OnboardingFlow />
+      </ThemeProvider>
+    );
+  }
 
   return (
     <ThemeProvider value={scheme === 'dark' ? DarkTheme : DefaultTheme}>
