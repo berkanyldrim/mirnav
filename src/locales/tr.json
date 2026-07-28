@@ -72,6 +72,56 @@
     "daysValue": "{{count}} gün",
     "hoursValue": "{{hours}} sa"
   },
+  "achievements": {
+    "title": "Başarılar",
+    "progressValue": "({{current}}/{{target}})",
+    "items": {
+      "hours4": {
+        "title": "Patili Çaylak",
+        "description": "Toplam odaklanma 4 saate ulaşsın"
+      },
+      "hours24": {
+        "title": "Mahalle Gözcüsü",
+        "description": "Toplam odaklanma 24 saate ulaşsın"
+      },
+      "hours72": {
+        "title": "Kedi Dostu",
+        "description": "Toplam odaklanma 72 saate ulaşsın"
+      },
+      "hours168": {
+        "title": "Koloni Koruyucusu",
+        "description": "Toplam odaklanma 168 saate ulaşsın"
+      },
+      "hours360": {
+        "title": "Sokakların Efsanesi",
+        "description": "Toplam odaklanma 360 saate ulaşsın"
+      },
+      "streak3": {
+        "title": "3 Gün Üst Üste",
+        "description": "3 gün üst üste seans tamamla"
+      },
+      "streak7": {
+        "title": "7 Gün Üst Üste",
+        "description": "7 gün üst üste seans tamamla"
+      },
+      "streak30": {
+        "title": "30 Gün Üst Üste",
+        "description": "30 gün üst üste seans tamamla"
+      },
+      "sessions10": {
+        "title": "İlk 10 Mama",
+        "description": "10 seans tamamla"
+      },
+      "sessions50": {
+        "title": "Mama Deposu",
+        "description": "50 seans tamamla"
+      },
+      "sessions200": {
+        "title": "Koloninin Aşçısı",
+        "description": "200 seans tamamla"
+      }
+    }
+  },
   "timeline": {
     "title": "Zaman Tüneli",
     "today": "Bugün",

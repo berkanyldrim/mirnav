@@ -19,6 +19,7 @@ type SessionState = {
   totalFocusSeconds: number;
   completedSessionCount: number;
   currentStreak: number;
+  bestStreak: number;
   lastCompletedDate: string | null;
   lastProtectionDate: string | null;
   unlockedCatId: string | null;
@@ -40,6 +41,7 @@ export const useSessionStore = create<SessionState>()(
       totalFocusSeconds: 0,
       completedSessionCount: 0,
       currentStreak: 0,
+      bestStreak: 0,
       lastCompletedDate: null,
       lastProtectionDate: null,
       unlockedCatId: null,
@@ -67,6 +69,7 @@ export const useSessionStore = create<SessionState>()(
           totalFocusSeconds: nextTotalFocusSeconds,
           completedSessionCount: state.completedSessionCount + 1,
           currentStreak: streakUpdate.streak,
+          bestStreak: Math.max(state.bestStreak, streakUpdate.streak),
           lastCompletedDate: completionDate,
           lastProtectionDate: streakUpdate.usedProtection
             ? completionDate
@@ -107,6 +110,7 @@ export const useSessionStore = create<SessionState>()(
         totalFocusSeconds: state.totalFocusSeconds,
         completedSessionCount: state.completedSessionCount,
         currentStreak: state.currentStreak,
+        bestStreak: state.bestStreak,
         lastCompletedDate: state.lastCompletedDate,
         lastProtectionDate: state.lastProtectionDate,
       }),

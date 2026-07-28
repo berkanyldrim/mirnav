@@ -73,7 +73,7 @@ Katman ayrımı PROJE.md Bölüm 7'de. Free maddeler Pro'dan önce yapılır ki 
 - [ ] Etiket yönetimi (free): özel etiket oluşturma/arama
 - [x] Seans kaydı altyapısı: her seans tarih/süre/etiket/sonuç ile local geçmişe yazılır (`sessionLogStore`, 2000 kayıt tavanı — istatistik ve tünelin veri kaynağı)
 - [x] Temel istatistik ekranı (free): 5. sekme "İstatistik" — bugünkü odak/seans, seri, toplam saat/seans kartları (`features/stats/summary.ts`)
-- [ ] Başarılar (free): toplam odak saati + üst üste gün rozetleri
+- [x] Başarılar (free): 11 rozet — toplam saat (4/24/72/168/360), üst üste gün (3/7/30, kalıcı `bestStreak` üzerinden), seans sayısı (10/50/200); İstatistik sekmesinden ulaşılır (`app/achievements.tsx`, `constants/achievements.ts`)
 - [ ] Detaylı istatistikler (Pro): gün/hafta/ay/yıl görünümleri, odak dağılım grafiği, günün koloni görünümü
 - [x] Zaman Tüneli (Pro): güne göre gruplu seans geçmişi (tamamlanan/yarıda kalan, etiket + süre + saat), Pro değilse kilit ekranı + mağaza yönlendirmesi; İstatistik sekmesinden ulaşılır (gizli route `app/timeline.tsx`)
 - [ ] Mevsimlik özel kediler (Pro): katalog yapısı + koloni galerisinde gösterim
