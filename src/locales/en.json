@@ -72,6 +72,17 @@
     "daysValue": "{{count}} days",
     "hoursValue": "{{hours}} h"
   },
+  "timeline": {
+    "title": "Timeline",
+    "today": "Today",
+    "completed": "Session completed",
+    "failed": "Given up",
+    "minutesValue": "{{count}} min",
+    "empty": "No sessions logged yet. Start your first one!",
+    "proTitle": "Timeline is a Pro feature",
+    "proMessage": "Upgrade to Mırnav Pro to see your full session history.",
+    "proCta": "Go to store"
+  },
   "store": {
     "title": "Store",
     "pro": {

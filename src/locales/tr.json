@@ -72,6 +72,17 @@
     "daysValue": "{{count}} gün",
     "hoursValue": "{{hours}} sa"
   },
+  "timeline": {
+    "title": "Zaman Tüneli",
+    "today": "Bugün",
+    "completed": "Seans tamamlandı",
+    "failed": "Yarıda kaldı",
+    "minutesValue": "{{count}} dk",
+    "empty": "Henüz seans kaydın yok. İlk seansını başlat!",
+    "proTitle": "Zaman Tüneli Pro'da",
+    "proMessage": "Tüm seans geçmişini görmek için Mırnav Pro'ya geç.",
+    "proCta": "Mağazaya git"
+  },
   "store": {
     "title": "Mağaza",
     "pro": {
