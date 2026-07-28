@@ -3,7 +3,7 @@ import { persist } from 'zustand/middleware';
 
 import { DefaultDurationMinutes } from '@/constants/session';
 import { getNewlyUnlockedCat } from '@/features/colony/unlock';
-import { getNextStreak, toDateKey } from '@/features/focus-session/streak';
+import { getStreakUpdate, toDateKey } from '@/features/focus-session/streak';
 import { appStorage } from '@/lib/storage';
 
 export type SessionStatus = 'idle' | 'running' | 'completed' | 'failed';
@@ -16,6 +16,7 @@ type SessionState = {
   completedSessionCount: number;
   currentStreak: number;
   lastCompletedDate: string | null;
+  lastProtectionDate: string | null;
   unlockedCatId: string | null;
   selectDuration: (minutes: number) => void;
   startSession: () => void;
@@ -34,6 +35,7 @@ export const useSessionStore = create<SessionState>()(
       completedSessionCount: 0,
       currentStreak: 0,
       lastCompletedDate: null,
+      lastProtectionDate: null,
       unlockedCatId: null,
       selectDuration: (minutes) => set({ durationMinutes: minutes }),
       startSession: () =>
@@ -46,17 +48,22 @@ export const useSessionStore = create<SessionState>()(
         if (state.status !== 'running') return;
         const completionDate = toDateKey(new Date());
         const nextTotalFocusSeconds = state.totalFocusSeconds + state.durationMinutes * 60;
+        const streakUpdate = getStreakUpdate(
+          state.lastCompletedDate,
+          state.currentStreak,
+          completionDate,
+          state.lastProtectionDate,
+        );
         set({
           status: 'completed',
           endsAt: null,
           totalFocusSeconds: nextTotalFocusSeconds,
           completedSessionCount: state.completedSessionCount + 1,
-          currentStreak: getNextStreak(
-            state.lastCompletedDate,
-            state.currentStreak,
-            completionDate,
-          ),
+          currentStreak: streakUpdate.streak,
           lastCompletedDate: completionDate,
+          lastProtectionDate: streakUpdate.usedProtection
+            ? completionDate
+            : state.lastProtectionDate,
           unlockedCatId:
             getNewlyUnlockedCat(state.totalFocusSeconds, nextTotalFocusSeconds)?.id ?? null,
         });
@@ -73,6 +80,7 @@ export const useSessionStore = create<SessionState>()(
         completedSessionCount: state.completedSessionCount,
         currentStreak: state.currentStreak,
         lastCompletedDate: state.lastCompletedDate,
+        lastProtectionDate: state.lastProtectionDate,
       }),
     },
   ),
