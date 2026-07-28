@@ -72,6 +72,56 @@
     "daysValue": "{{count}} days",
     "hoursValue": "{{hours}} h"
   },
+  "achievements": {
+    "title": "Achievements",
+    "progressValue": "({{current}}/{{target}})",
+    "items": {
+      "hours4": {
+        "title": "Pawed Rookie",
+        "description": "Reach 4 hours of total focus"
+      },
+      "hours24": {
+        "title": "Street Watcher",
+        "description": "Reach 24 hours of total focus"
+      },
+      "hours72": {
+        "title": "Cat Friend",
+        "description": "Reach 72 hours of total focus"
+      },
+      "hours168": {
+        "title": "Colony Guardian",
+        "description": "Reach 168 hours of total focus"
+      },
+      "hours360": {
+        "title": "Legend of the Streets",
+        "description": "Reach 360 hours of total focus"
+      },
+      "streak3": {
+        "title": "3 Days in a Row",
+        "description": "Complete sessions 3 days in a row"
+      },
+      "streak7": {
+        "title": "7 Days in a Row",
+        "description": "Complete sessions 7 days in a row"
+      },
+      "streak30": {
+        "title": "30 Days in a Row",
+        "description": "Complete sessions 30 days in a row"
+      },
+      "sessions10": {
+        "title": "First 10 Meals",
+        "description": "Complete 10 sessions"
+      },
+      "sessions50": {
+        "title": "Food Pantry",
+        "description": "Complete 50 sessions"
+      },
+      "sessions200": {
+        "title": "Colony Chef",
+        "description": "Complete 200 sessions"
+      }
+    }
+  },
   "timeline": {
     "title": "Timeline",
     "today": "Today",

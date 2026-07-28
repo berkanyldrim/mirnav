@@ -90,22 +90,35 @@ export default function StatsScreen() {
               label={t('stats.totalSessionsLabel')}
             />
           </View>
-          <Pressable
-            onPress={() => router.push('/timeline')}
-            accessibilityRole="button"
-            accessibilityLabel={t('timeline.title')}
-            style={[styles.timelineRow, { backgroundColor: theme.backgroundElement }]}>
-            <Ionicons name="git-commit-outline" size={20} color={theme.accent} />
-            <ThemedText type="smallBold" style={styles.timelineLabel}>
-              {t('timeline.title')}
-            </ThemedText>
-            <View style={[styles.proBadge, { backgroundColor: theme.accent }]}>
-              <ThemedText type="small" style={{ color: theme.accentForeground }}>
-                {t('store.pro.badge')}
+          <View style={styles.linkList}>
+            <Pressable
+              onPress={() => router.push('/achievements')}
+              accessibilityRole="button"
+              accessibilityLabel={t('achievements.title')}
+              style={[styles.linkRow, { backgroundColor: theme.backgroundElement }]}>
+              <Ionicons name="ribbon-outline" size={20} color={theme.accent} />
+              <ThemedText type="smallBold" style={styles.linkLabel}>
+                {t('achievements.title')}
               </ThemedText>
-            </View>
-            <Ionicons name="chevron-forward" size={18} color={theme.textSecondary} />
-          </Pressable>
+              <Ionicons name="chevron-forward" size={18} color={theme.textSecondary} />
+            </Pressable>
+            <Pressable
+              onPress={() => router.push('/timeline')}
+              accessibilityRole="button"
+              accessibilityLabel={t('timeline.title')}
+              style={[styles.linkRow, { backgroundColor: theme.backgroundElement }]}>
+              <Ionicons name="git-commit-outline" size={20} color={theme.accent} />
+              <ThemedText type="smallBold" style={styles.linkLabel}>
+                {t('timeline.title')}
+              </ThemedText>
+              <View style={[styles.proBadge, { backgroundColor: theme.accent }]}>
+                <ThemedText type="small" style={{ color: theme.accentForeground }}>
+                  {t('store.pro.badge')}
+                </ThemedText>
+              </View>
+              <Ionicons name="chevron-forward" size={18} color={theme.textSecondary} />
+            </Pressable>
+          </View>
         </View>
       </SafeAreaView>
     </ThemedView>
@@ -141,14 +154,17 @@ const styles = StyleSheet.create({
   cardLabel: {
     textAlign: 'left',
   },
-  timelineRow: {
+  linkList: {
+    gap: Spacing.two,
+  },
+  linkRow: {
     flexDirection: 'row',
     alignItems: 'center',
     gap: Spacing.two,
     borderRadius: 16,
     padding: Spacing.three,
   },
-  timelineLabel: {
+  linkLabel: {
     flex: 1,
   },
   proBadge: {
