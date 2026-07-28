@@ -2,7 +2,10 @@ import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
 import { DefaultDurationMinutes } from '@/constants/session';
+import { DefaultTag } from '@/constants/tags';
 import { getNewlyUnlockedCat } from '@/features/colony/unlock';
+import { createSessionRecord, getElapsedMinutes } from '@/features/focus-session/session-log';
+import { useSessionLogStore } from '@/features/focus-session/session-log-store';
 import { getStreakUpdate, toDateKey } from '@/features/focus-session/streak';
 import { appStorage } from '@/lib/storage';
 
@@ -11,6 +14,7 @@ export type SessionStatus = 'idle' | 'running' | 'completed' | 'failed';
 type SessionState = {
   status: SessionStatus;
   durationMinutes: number;
+  tagId: string;
   endsAt: number | null;
   totalFocusSeconds: number;
   completedSessionCount: number;
@@ -19,6 +23,7 @@ type SessionState = {
   lastProtectionDate: string | null;
   unlockedCatId: string | null;
   selectDuration: (minutes: number) => void;
+  selectTag: (tagId: string) => void;
   startSession: () => void;
   completeSession: () => void;
   failSession: () => void;
@@ -30,6 +35,7 @@ export const useSessionStore = create<SessionState>()(
     (set, get) => ({
       status: 'idle',
       durationMinutes: DefaultDurationMinutes,
+      tagId: DefaultTag.id,
       endsAt: null,
       totalFocusSeconds: 0,
       completedSessionCount: 0,
@@ -38,6 +44,7 @@ export const useSessionStore = create<SessionState>()(
       lastProtectionDate: null,
       unlockedCatId: null,
       selectDuration: (minutes) => set({ durationMinutes: minutes }),
+      selectTag: (tagId) => set({ tagId }),
       startSession: () =>
         set((state) => ({
           status: 'running',
@@ -67,8 +74,28 @@ export const useSessionStore = create<SessionState>()(
           unlockedCatId:
             getNewlyUnlockedCat(state.totalFocusSeconds, nextTotalFocusSeconds)?.id ?? null,
         });
+        useSessionLogStore.getState().addRecord(
+          createSessionRecord({
+            endedAt: Date.now(),
+            durationMinutes: state.durationMinutes,
+            tagId: state.tagId,
+            outcome: 'completed',
+          }),
+        );
       },
-      failSession: () => set({ status: 'failed', endsAt: null, unlockedCatId: null }),
+      failSession: () => {
+        const state = get();
+        if (state.status !== 'running') return;
+        set({ status: 'failed', endsAt: null, unlockedCatId: null });
+        useSessionLogStore.getState().addRecord(
+          createSessionRecord({
+            endedAt: Date.now(),
+            durationMinutes: getElapsedMinutes(state.endsAt, state.durationMinutes, Date.now()),
+            tagId: state.tagId,
+            outcome: 'failed',
+          }),
+        );
+      },
       resetSession: () => set({ status: 'idle', endsAt: null, unlockedCatId: null }),
     }),
     {
@@ -76,6 +103,7 @@ export const useSessionStore = create<SessionState>()(
       storage: appStorage,
       partialize: (state) => ({
         durationMinutes: state.durationMinutes,
+        tagId: state.tagId,
         totalFocusSeconds: state.totalFocusSeconds,
         completedSessionCount: state.completedSessionCount,
         currentStreak: state.currentStreak,
