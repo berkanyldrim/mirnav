@@ -56,23 +56,37 @@ Bkz. `PROJE.md` genel bağlam için, `PROJE_KURALLARI.md` kod standartları içi
 
 ## 5. Faz 3 — Mağaza ve Gelir
 
-- [ ] RevenueCat entegrasyonu, ürün kataloğu tanımı (App Store Connect + Play Console'da eşleşen ürün ID'leri)
-- [ ] Mağaza ekranı UI'ı (Pro paket vurgulu kart + kozmetik grid)
+- [ ] RevenueCat abonelik entegrasyonu: aylık/yıllık Pro + 7 gün deneme (App Store Connect + Play Console'da eşleşen ürün ID'leri)
+- [ ] Paywall UI: Free/Pro karşılaştırma tablosu, tek net CTA, deneme/yenileme koşulları açıkça yazılır
+- [ ] Kozmetik grid + tekil kozmetik IAP (Pro abonelerinde tümü açık gösterilir)
+- [ ] `entitlementStore`: Pro abonelik ve kozmetik sahipliği durumu (local persist, RevenueCat ile senkron)
 - [ ] Satın alma sonrası unlock mantığı (kozmetik kedi kıyafeti/temanın anında yansıması)
-- [ ] "Satın alımları geri yükle" akışı (Apple/Google zorunlu kılıyor)
-- [ ] Paywall metinleri ve görselleri (agresif olmayan, tek net CTA)
+- [ ] "Satın alımları geri yükle" akışı (Apple/Google zorunlu kılıyor) + ayarlarda abonelik yönetimi bağlantısı
 
-## 6. Faz 4 — Cila ve Yayına Hazırlık
+## 6. Faz 4 — İstatistik, Etiketler ve Başarılar
+
+Katman ayrımı PROJE.md Bölüm 7'de. Free maddeler Pro'dan önce yapılır ki paywall'da gösterilecek Pro farkı gerçek olsun.
+
+- [ ] Etiketler (free): seans başlatırken etiket seçimi, etiket yönetimi (renkli liste, arama/oluşturma)
+- [ ] Seans kaydı altyapısı: her seans tarih/süre/etiket/sonuç ile local geçmişe yazılır (istatistik ve tünelin veri kaynağı)
+- [ ] Temel istatistik ekranı (free): toplam saat, seri, bugünün özeti
+- [ ] Başarılar (free): toplam odak saati + üst üste gün rozetleri
+- [ ] Detaylı istatistikler (Pro): gün/hafta/ay/yıl görünümleri, odak dağılım grafiği, günün koloni görünümü
+- [ ] Zaman Tüneli (Pro): seans geçmişi listesi (tamamlanan/başarısız, açılan kediler)
+- [ ] Mevsimlik özel kediler (Pro): katalog yapısı + koloni galerisinde gösterim
+
+## 7. Faz 5 — Cila ve Yayına Hazırlık
 
 - [ ] Bildirim planlama (günlük hatırlatma, kullanıcı ayarlardan kapatabilmeli)
 - [ ] Onboarding akışı (3 ekranlık kısa tanıtım, atlanabilir)
+- [ ] Başlangıç Görevleri: ilk açılışta 2-3 görevlik liste (ör. "1 seans tamamla", "koloniyi ziyaret et"), ödül ilk kedinin tanıtımı — satın alma içermez, Forest "Başlangıç Mücadelesi" uyarlaması
 - [ ] Karanlık mod desteği
 - [ ] Türkçe/İngilizce dil geçişi test
 - [ ] Performans: Lottie animasyonlarının düşük uçlu cihazlarda akıcılığı
 - [ ] App Store / Play Store metadata (açıklama, ekran görüntüleri, gizlilik politikası sayfası)
 - [ ] Analitik (ör. PostHog veya Firebase Analytics — hangi ekranlarda terk edildiği görülebilsin)
 
-## 7. Teknik Notlar
+## 8. Teknik Notlar
 
 **Arka plan algılama mantığı (özet):**
 `AppState.addEventListener('change', ...)` ile `active` → `background` geçişini yakala. Geçiş anında seans state'ini `interrupted` olarak işaretle. Kullanıcı 3-5 saniye içinde geri dönerse (ör. bildirim çekmesi gibi kazara durumlar) toleranslı davran — anında ceza yerine kısa bir tolerans penceresi bırak, bu kullanıcı deneyimini sertleştirmez.
