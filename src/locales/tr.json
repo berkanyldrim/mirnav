@@ -130,8 +130,18 @@
     "minutesValue": "{{count}} dk",
     "empty": "Henüz seans kaydın yok. İlk seansını başlat!",
     "proTitle": "Zaman Tüneli Pro'da",
-    "proMessage": "Tüm seans geçmişini görmek için Mırnav Pro'ya geç.",
-    "proCta": "Mağazaya git"
+    "proMessage": "Tüm seans geçmişini görmek için Mırnav Pro'ya geç."
+  },
+  "detailedStats": {
+    "title": "Detaylı İstatistik",
+    "day": "Gün",
+    "week": "Hafta",
+    "month": "Ay",
+    "year": "Yıl",
+    "periodTotal": "Toplam: {{minutes}} dk",
+    "selectedValue": "{{label}}: {{minutes}} dk",
+    "proTitle": "Detaylı istatistikler Pro'da",
+    "proMessage": "Gün, hafta, ay ve yıl grafiklerini görmek için Mırnav Pro'ya geç."
   },
   "store": {
     "title": "Mağaza",
@@ -146,7 +156,8 @@
       },
       "cta": "{{count}} gün ücretsiz dene",
       "priceNote": "Sonra yıllık {{yearly}} veya aylık {{monthly}}. İstediğin zaman iptal edebilirsin.",
-      "comingSoon": "Satın alma yakında aktif olacak"
+      "comingSoon": "Satın alma yakında aktif olacak",
+      "gateCta": "Mağazaya git"
     },
     "cosmetics": {
       "label": "Kozmetikler",

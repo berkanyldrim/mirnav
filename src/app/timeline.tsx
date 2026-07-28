@@ -1,7 +1,6 @@
 import { Ionicons } from '@expo/vector-icons';
-import { useRouter } from 'expo-router';
 import { useTranslation } from 'react-i18next';
-import { Pressable, SectionList, StyleSheet, View } from 'react-native';
+import { SectionList, StyleSheet, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { ThemedText } from '@/components/themed-text';
@@ -12,13 +11,13 @@ import { SessionRecord } from '@/features/focus-session/session-log';
 import { useSessionLogStore } from '@/features/focus-session/session-log-store';
 import { toDateKey } from '@/features/focus-session/streak';
 import { useEntitlementStore } from '@/features/store/entitlement-store';
+import { ProTeaser } from '@/features/store/pro-teaser';
 import { groupRecordsByDate } from '@/features/timeline/group-records';
 import { useTheme } from '@/hooks/use-theme';
 
 export default function TimelineScreen() {
   const { t, i18n } = useTranslation();
   const theme = useTheme();
-  const router = useRouter();
   const records = useSessionLogStore((state) => state.records);
   const isPro = useEntitlementStore((state) => state.isPro);
 
@@ -69,23 +68,7 @@ export default function TimelineScreen() {
     return (
       <ThemedView style={styles.container}>
         <SafeAreaView style={styles.safeArea}>
-          <View style={styles.teaser}>
-            <Ionicons name="lock-closed" size={40} color={theme.textSecondary} />
-            <ThemedText type="smallBold" style={styles.teaserText}>
-              {t('timeline.proTitle')}
-            </ThemedText>
-            <ThemedText type="small" themeColor="textSecondary" style={styles.teaserText}>
-              {t('timeline.proMessage')}
-            </ThemedText>
-            <Pressable
-              onPress={() => router.push('/store')}
-              accessibilityRole="button"
-              style={[styles.teaserButton, { backgroundColor: theme.accent }]}>
-              <ThemedText type="smallBold" style={{ color: theme.accentForeground }}>
-                {t('timeline.proCta')}
-              </ThemedText>
-            </Pressable>
-          </View>
+          <ProTeaser title={t('timeline.proTitle')} message={t('timeline.proMessage')} />
         </SafeAreaView>
       </ThemedView>
     );
@@ -157,22 +140,5 @@ const styles = StyleSheet.create({
     width: 8,
     height: 8,
     borderRadius: 999,
-  },
-  teaser: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    gap: Spacing.two,
-    padding: Spacing.four,
-  },
-  teaserText: {
-    textAlign: 'center',
-    maxWidth: 280,
-  },
-  teaserButton: {
-    marginTop: Spacing.two,
-    borderRadius: 999,
-    paddingVertical: Spacing.two,
-    paddingHorizontal: Spacing.four,
   },
 });

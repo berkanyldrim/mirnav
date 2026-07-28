@@ -50,6 +50,7 @@ export default function RootLayout() {
         />
         <Tabs.Screen name="timeline" options={{ href: null }} />
         <Tabs.Screen name="achievements" options={{ href: null }} />
+        <Tabs.Screen name="detailed-stats" options={{ href: null }} />
         <Tabs.Screen
           name="store"
           options={{
