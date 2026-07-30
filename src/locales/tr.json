@@ -200,6 +200,15 @@
       "system": "Sistem dili",
       "tr": "Türkçe",
       "en": "English"
+    },
+    "notifications": {
+      "label": "Bildirimler",
+      "dailyReminder": "Günlük hatırlatma",
+      "description": "Her akşam {{time}} sularında nazik bir hatırlatma"
     }
+  },
+  "notifications": {
+    "reminderTitle": "Kediler acıktı 🐾",
+    "reminderBody": "Bugün henüz odaklanmadın. Kısa bir seansla Boncuk'u besle!"
   }
 }

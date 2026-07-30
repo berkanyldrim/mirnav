@@ -1,12 +1,18 @@
 import { Ionicons } from '@expo/vector-icons';
 import { useTranslation } from 'react-i18next';
-import { Pressable, StyleSheet, View } from 'react-native';
+import { Pressable, StyleSheet, Switch, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
 import { LanguagePreference, LanguagePreferences } from '@/constants/languages';
+import { DailyReminderTime } from '@/constants/notifications';
 import { Spacing } from '@/constants/theme';
+import {
+  cancelDailyReminder,
+  ensureNotificationPermission,
+  scheduleDailyReminder,
+} from '@/features/notifications/reminder';
 import { useSettingsStore } from '@/features/settings/settings-store';
 import { useTheme } from '@/hooks/use-theme';
 
@@ -15,6 +21,20 @@ export default function SettingsScreen() {
   const theme = useTheme();
   const language = useSettingsStore((state) => state.language);
   const setLanguage = useSettingsStore((state) => state.setLanguage);
+  const reminderEnabled = useSettingsStore((state) => state.reminderEnabled);
+  const setReminderEnabled = useSettingsStore((state) => state.setReminderEnabled);
+
+  const toggleReminder = async (enabled: boolean) => {
+    if (!enabled) {
+      setReminderEnabled(false);
+      await cancelDailyReminder();
+      return;
+    }
+    const granted = await ensureNotificationPermission();
+    if (!granted) return;
+    setReminderEnabled(true);
+    await scheduleDailyReminder();
+  };
 
   const renderOption = (option: LanguagePreference) => {
     const selected = option === language;
@@ -49,6 +69,27 @@ export default function SettingsScreen() {
             </ThemedText>
             {LanguagePreferences.map(renderOption)}
           </View>
+          <View style={styles.section}>
+            <ThemedText type="smallBold" themeColor="textSecondary">
+              {t('settings.notifications.label')}
+            </ThemedText>
+            <View style={[styles.option, { backgroundColor: theme.backgroundElement }]}>
+              <View style={styles.reminderInfo}>
+                <ThemedText>{t('settings.notifications.dailyReminder')}</ThemedText>
+                <ThemedText type="small" themeColor="textSecondary">
+                  {t('settings.notifications.description', {
+                    time: `${DailyReminderTime.hour}:${String(DailyReminderTime.minute).padStart(2, '0')}`,
+                  })}
+                </ThemedText>
+              </View>
+              <Switch
+                value={reminderEnabled}
+                onValueChange={toggleReminder}
+                trackColor={{ true: theme.accent, false: theme.backgroundSelected }}
+                accessibilityLabel={t('settings.notifications.dailyReminder')}
+              />
+            </View>
+          </View>
         </View>
       </SafeAreaView>
     </ThemedView>
@@ -78,5 +119,10 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     borderRadius: 16,
     padding: Spacing.three,
+  },
+  reminderInfo: {
+    flex: 1,
+    gap: Spacing.half,
+    paddingRight: Spacing.two,
   },
 });
