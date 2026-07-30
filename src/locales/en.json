@@ -200,6 +200,15 @@
       "system": "System language",
       "tr": "Türkçe",
       "en": "English"
+    },
+    "notifications": {
+      "label": "Notifications",
+      "dailyReminder": "Daily reminder",
+      "description": "A gentle nudge around {{time}} every evening"
     }
+  },
+  "notifications": {
+    "reminderTitle": "The cats are hungry 🐾",
+    "reminderBody": "You haven't focused yet today. Feed Boncuk with a short session!"
   }
 }
